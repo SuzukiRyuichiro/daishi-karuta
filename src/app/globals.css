@@ -125,5 +125,6 @@ body {
 }
 
 .card-face-back {
-  background-color: rgba(10, 10, 10, 0.1);
+  background-image: url("../assets/card.jpeg");
+  background-size: cover;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import type { LucideIcon } from 'lucide-react';
-import { Sparkles, HelpCircle } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface KarutaCardProps {
   text: string | null;
@@ -31,7 +31,6 @@ export function KarutaCard({ text, isFlipped, isLoading, backContent }: KarutaCa
   } else {
      backDisplay = (
         <div className="flex flex-col items-center justify-center text-accent opacity-70">
-          <HelpCircle className="w-24 h-24" />
         </div>
       );
   }
