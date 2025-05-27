@@ -70,7 +70,7 @@ export default function SetupPage() {
                       <Textarea
                         id="readings-textarea"
                         placeholder="読み札をここに入力して下さい。"
-                        className="min-h-[250px] text-base font-jp bg-background border-input focus:ring-primary"
+                        className="min-h-[250px] text-base  bg-background border-input focus:ring-primary"
                         {...field}
                         disabled={isLoading}
                         aria-describedby="readings-help"

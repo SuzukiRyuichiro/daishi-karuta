@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap");
+
 body {
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans-serif), Arial, Helvetica, sans-serif;
 }
 
 @layer base {
@@ -41,6 +43,7 @@ body {
     --sidebar-accent-foreground: 0 0% 9%;
     --sidebar-border: 220 15% 25%;
     --sidebar-ring: 347 53.8% 42.4%;
+    --font-sans-serif: "Zen Kaku Gothic New";
   }
   .dark {
     --background: 47 10% 15%; /* Darker shade of off-white hue for dark mode */
@@ -122,5 +125,5 @@ body {
 }
 
 .card-face-back {
-  /* Styling for the back of the card */
+  background-color: rgba(10, 10, 10, 0.1);
 }

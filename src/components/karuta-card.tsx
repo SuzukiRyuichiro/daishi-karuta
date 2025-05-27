@@ -15,7 +15,7 @@ export function KarutaCard({ text, isFlipped, isLoading, backContent }: KarutaCa
   let backDisplay: React.ReactNode;
 
   if (isLoading) {
-    backDisplay = <p className="text-lg font-jp text-accent">読み込み中...</p>;
+    backDisplay = <p className="text-lg  text-accent">読み込み中...</p>;
   } else if (backContent) {
     if (React.isValidElement(backContent)) {
       backDisplay = backContent;
@@ -24,7 +24,7 @@ export function KarutaCard({ text, isFlipped, isLoading, backContent }: KarutaCa
       backDisplay = (
         <div className="flex flex-col items-center justify-center text-accent">
           <IconComponent className="w-16 h-16 mb-2" />
-          {backContent.text && <p className="font-jp text-lg">{backContent.text}</p>}
+          {backContent.text && <p className=" text-lg">{backContent.text}</p>}
         </div>
       );
     }
@@ -45,11 +45,11 @@ export function KarutaCard({ text, isFlipped, isLoading, backContent }: KarutaCa
         </div>
         <div className="card-face card-face-front p-6">
           {text ? (
-            <p className="font-jp text-xl sm:text-2xl md:text-3xl text-foreground whitespace-pre-line text-center leading-relaxed">
+            <p className=" text-xl sm:text-2xl md:text-3xl text-foreground whitespace-pre-line text-center leading-relaxed">
               {text}
             </p>
           ) : (
-            <p className="font-jp text-xl text-muted-foreground">...</p>
+            <p className=" text-xl text-muted-foreground">...</p>
           )}
         </div>
       </div>
