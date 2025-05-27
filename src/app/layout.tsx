@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased flex flex-col min-h-screen">
         {!isPaid ? (
-          <div className="flex items-center justify-center min-h-screen text-4xl font-bold">
+          <div className="flex items-center justify-center min-h-screen text-4xl font-bold mx-10">
             お金くれるなら、追加機能も含めて公開してあげる
           </div>
         ) : (
