@@ -38,7 +38,7 @@ export function KarutaCard({ text, isFlipped, isLoading, backContent }: KarutaCa
 
 
   return (
-    <div className={`card-container-perspective w-72 h-[26rem] sm:w-80 sm:h-[28rem] md:w-96 md:h-[32rem] ${isFlipped ? 'flipped' : ''}`}>
+    <div className={`card-container-perspective w-72 h-[26rem] sm:w-96 sm:h-[32rem] ${isFlipped ? 'flipped' : ''}`}>
       <div className="card-inner-rotate">
         <div className="card-face card-face-back p-4">
           {backDisplay}

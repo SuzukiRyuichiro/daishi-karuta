@@ -68,7 +68,7 @@ export default function HomePage() {
 
   const handleNext = () => {
     if (isReadingAudio || isProcessingNext || !game.isGameActive || game.remainingCount === 0) return;
-    
+
     setIsProcessingNext(true);
     setIsCardFaceVisible(false); // Flip card back
 
@@ -93,7 +93,7 @@ export default function HomePage() {
     setIsProcessingNext(false);
     game.resetGame();
   };
-  
+
   useEffect(() => {
     // Cleanup speech synthesis on component unmount
     return () => {
@@ -118,7 +118,7 @@ export default function HomePage() {
   const isGameOver = game.isGameActive && game.remainingCount === 0 && game.currentCard !== null;
   const canPlayNext = game.isGameActive && !isReadingAudio && !isProcessingNext && game.remainingCount > 0;
   const canStartGame = !game.isGameActive && game.deck.length > 0;
-  
+
   let playButtonText = "ゲームスタート";
   let playButtonIcon = <Play className="mr-2 h-5 w-5" />;
   let playButtonAction = handlePlay;
@@ -140,7 +140,7 @@ export default function HomePage() {
       playButtonText = "読み札がありません。設定画面で読み札を登録して下さい。";
       playButtonDisabled = true; // Disabled because no deck
   }
-  
+
   if (isProcessingNext || (isReadingAudio && game.isGameActive && !isGameOver) ) {
      playButtonIcon = <Loader2 className="mr-2 h-5 w-5 animate-spin" />;
   }
@@ -153,24 +153,24 @@ export default function HomePage() {
         isFlipped={isCardFaceVisible && !isProcessingNext}
         isLoading={isProcessingNext && !currentCardTextForDisplay}
       />
-      
-      <div className="mt-12 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
-        <Button 
-          onClick={playButtonAction} 
-          disabled={playButtonDisabled} 
+
+      <div className="mt-12 flex w-full max-w-72 sm:max-w-fit flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+        <Button
+          onClick={playButtonAction}
+          disabled={playButtonDisabled}
           size="lg"
-          className="w-48"
+          className="sm:w-48 w-full"
           aria-live="polite"
         >
           {playButtonIcon}
           {playButtonText}
         </Button>
-        <Button 
-          onClick={handleReset} 
-          variant="outline" 
-          size="lg" 
+        <Button
+          onClick={handleReset}
+          variant="outline"
+          size="lg"
           disabled={isReadingAudio || isProcessingNext || (!game.isGameActive && game.currentIndex === -1)}
-          className="w-40"
+          className="sm:w-40 w-full"
         >
           <RotateCcw className="mr-2 h-5 w-5" />
           リセット
