@@ -1,13 +1,13 @@
 import Link from 'next/link';
-import { BookOpenText, Settings, PlayCircle } from 'lucide-react';
+import { Spade, Settings, PlayCircle } from 'lucide-react';
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors">
-          <BookOpenText className="h-8 w-8" />
-          <span className="text-2xl font-bold">Karuta Kicker</span>
+          <Spade className="h-8 w-8" />
+          <span className="text-2xl font-bold">かるた</span>
         </Link>
         <nav className="flex items-center space-x-6">
           <Link href="/" className="flex items-center text-sm font-medium text-foreground/70 hover:text-primary transition-colors">

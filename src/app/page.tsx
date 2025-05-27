@@ -119,25 +119,25 @@ export default function HomePage() {
   const canPlayNext = game.isGameActive && !isReadingAudio && !isProcessingNext && game.remainingCount > 0;
   const canStartGame = !game.isGameActive && game.deck.length > 0;
   
-  let playButtonText = "Start Game";
+  let playButtonText = "ゲームスタート";
   let playButtonIcon = <Play className="mr-2 h-5 w-5" />;
   let playButtonAction = handlePlay;
   let playButtonDisabled = isReadingAudio || isProcessingNext || game.deck.length === 0;
 
   if (game.isGameActive) {
     if (isGameOver && isCardFaceVisible) { // Last card shown
-      playButtonText = "Play Again";
+      playButtonText = "もう一度遊ぶ";
       playButtonIcon = <RotateCcw className="mr-2 h-5 w-5" />;
       playButtonAction = handlePlay; // This will call startGame which resets and shuffles
       playButtonDisabled = isReadingAudio || isProcessingNext;
     } else { // Mid-game
-      playButtonText = "Next Card";
+      playButtonText = "次の読み札";
       playButtonIcon = <SkipForward className="mr-2 h-5 w-5" />;
       playButtonAction = handleNext;
       playButtonDisabled = !canPlayNext || isReadingAudio || isProcessingNext;
     }
   } else if (game.deck.length === 0) {
-      playButtonText = "Setup Deck First";
+      playButtonText = "読み札がありません。設定画面で読み札を登録して下さい。";
       playButtonDisabled = true; // Disabled because no deck
   }
   
@@ -173,7 +173,7 @@ export default function HomePage() {
           className="w-40"
         >
           <RotateCcw className="mr-2 h-5 w-5" />
-          Reset
+          リセット
         </Button>
       </div>
 
