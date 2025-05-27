@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback }  from 'react';
+import { useState, useEffect, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
 
-const DECK_STORAGE_KEY = 'karutaKickerDeck';
+const DECK_STORAGE_KEY = "karutaKickerDeck";
 const DEFAULT_DECK: string[] = [
-  'こんにちは世界',
-  'ありがとう',
-  'さようなら、友よ',
-  'おやすみなさい',
-  'はじめまして、どうぞよろしく'
+  "猿も木から落ちる",
+  "石の上にも三年",
+  "七転び八起き",
+  "花より団子",
+  "急がば回れ",
 ];
 
 export interface KarutaGame {
@@ -41,7 +41,11 @@ export function useKarutaGame(): KarutaGame {
       const storedDeck = localStorage.getItem(DECK_STORAGE_KEY);
       if (storedDeck) {
         const parsedDeck = JSON.parse(storedDeck);
-        if (Array.isArray(parsedDeck) && parsedDeck.every(item => typeof item === 'string') && parsedDeck.length > 0) {
+        if (
+          Array.isArray(parsedDeck) &&
+          parsedDeck.every((item) => typeof item === "string") &&
+          parsedDeck.length > 0
+        ) {
           setDeck(parsedDeck);
         } else {
           setDeck(DEFAULT_DECK);
@@ -57,21 +61,25 @@ export function useKarutaGame(): KarutaGame {
     }
     setIsLoading(false);
   }, []);
-  
+
   useEffect(() => {
     loadDeck();
   }, [loadDeck]);
 
   const saveDeck = (newDeck: string[]) => {
     if (newDeck.length === 0) {
-      toast({ title: "Error", description: "Deck cannot be empty. Using default deck.", variant: "destructive" });
+      toast({
+        title: "エラー",
+        description: "読み札がありません。デフォルトの読み札を使います。",
+        variant: "destructive",
+      });
       setDeck(DEFAULT_DECK);
       localStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(DEFAULT_DECK));
       return;
     }
     setDeck(newDeck);
     localStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(newDeck));
-    toast({ title: "Success", description: "Deck saved successfully!" });
+    toast({ title: "保存完了", description: "読み札が登録されました。" });
     resetGame(); // Reset game state as deck has changed
   };
 
@@ -86,7 +94,11 @@ export function useKarutaGame(): KarutaGame {
 
   const startGame = (): string | null => {
     if (deck.length === 0) {
-      toast({ title: "Error", description: "Deck is empty. Please set up the deck first.", variant: "destructive" });
+      toast({
+        title: "エラー",
+        description: "読み札がありません。読み札を登録して下さい。",
+        variant: "destructive",
+      });
       return null;
     }
     const newShuffledDeck = shuffleArray(deck);
@@ -120,7 +132,10 @@ export function useKarutaGame(): KarutaGame {
     deck,
     currentCard,
     isGameActive,
-    remainingCount: isGameActive && shuffledDeck.length > 0 ? shuffledDeck.length - (currentIndex + 1) : 0,
+    remainingCount:
+      isGameActive && shuffledDeck.length > 0
+        ? shuffledDeck.length - (currentIndex + 1)
+        : 0,
     totalCount: deck.length,
     isLoading,
     loadDeck,

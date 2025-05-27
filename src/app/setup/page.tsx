@@ -29,7 +29,7 @@ export default function SetupPage() {
       readings: "",
     },
   });
-  
+
   useEffect(() => {
     if (!isLoading && deck.length > 0) {
       form.reset({ readings: deck.join('\n') });
@@ -52,9 +52,9 @@ export default function SetupPage() {
     <div className="flex flex-col items-center py-10">
       <Card className="w-full max-w-2xl shadow-lg">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-primary">Setup Your Karuta Deck</CardTitle>
+          <CardTitle className="text-3xl font-bold text-primary">読み札の設定</CardTitle>
           <CardDescription>
-            Enter each card reading on a new line. These will be the phrases read out during the game.
+            読み札のリストをここに書いて下さい。各改行が一枚の読み札分です。
           </CardDescription>
         </CardHeader>
         <Form {...form}>
@@ -65,11 +65,11 @@ export default function SetupPage() {
                 name="readings"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel htmlFor="readings-textarea" className="text-lg">Card Readings:</FormLabel>
+                    <FormLabel htmlFor="readings-textarea" className="text-lg">読み札</FormLabel>
                     <FormControl>
                       <Textarea
                         id="readings-textarea"
-                        placeholder="Enter card readings here, one per line..."
+                        placeholder="読み札をここに入力して下さい。"
                         className="min-h-[250px] text-base font-jp bg-background border-input focus:ring-primary"
                         {...field}
                         disabled={isLoading}
@@ -77,7 +77,7 @@ export default function SetupPage() {
                       />
                     </FormControl>
                     <p id="readings-help" className="text-sm text-muted-foreground mt-1">
-                      Each line will be treated as a separate card.
+                      各改行が一枚の読み札となります。
                     </p>
                     <FormMessage />
                   </FormItem>
@@ -86,7 +86,7 @@ export default function SetupPage() {
             </CardContent>
             <CardFooter>
               <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={form.formState.isSubmitting || isLoading}>
-                {form.formState.isSubmitting || isLoading ? "Saving..." : "Save Deck"}
+                {form.formState.isSubmitting || isLoading ? "保存中..." : "保存する"}
               </Button>
             </CardFooter>
           </form>
