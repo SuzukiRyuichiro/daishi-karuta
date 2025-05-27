@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: 'だーいしのかるたアプリ',
 };
 
+const isPaid = process.env.ISHIDA_PAID === 'true';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -16,12 +18,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased  flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow container mx-auto px-4 py-8">
-          {children}
-        </main>
-        <Toaster />
+      <body className="antialiased flex flex-col min-h-screen">
+        {!isPaid ? (
+          <div className="flex items-center justify-center min-h-screen text-4xl font-bold">
+            金払え
+          </div>
+        ) : (
+          <>
+            <Header />
+            <main className="flex-grow container mx-auto px-4 py-8">
+              {children}
+            </main>
+            <Toaster />
+          </>
+        )}
       </body>
     </html>
   );
