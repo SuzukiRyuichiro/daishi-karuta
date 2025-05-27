@@ -12,9 +12,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useEffect } from "react";
 
 const deckSchema = z.object({
-  readings: z.string().min(1, "Please enter at least one reading.").refine(
+  readings: z.string().min(1, "一行だけでも書いて下さい。").refine(
     (val) => val.trim().split('\n').filter(line => line.trim() !== '').length > 0,
-    { message: "Please enter at least one valid reading." }
+    { message: "一行だけでも書いて下さい。" }
   ),
 });
 
