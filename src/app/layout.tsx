@@ -16,14 +16,15 @@ const geistMono = Geist_Mono({
 });
 
 const notoSansJP = Noto_Sans_JP({
-  subsets: ['latin', 'cyrillic-ext', 'japanese', 'latin-ext', 'vietnamese'], // Added 'japanese' and other common subsets
+  subsets: ['latin'],
   weight: ['400', '700'], // Common weights
+  fallback: ['Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'sans-serif'],
   variable: '--font-noto-sans-jp',
 });
 
 export const metadata: Metadata = {
-  title: 'Karuta Kicker',
-  description: 'A Karuta reading companion app.',
+  title: 'だーいしのかるた',
+  description: 'だーいしのかるたアプリ',
 };
 
 export default function RootLayout({
